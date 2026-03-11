@@ -1,4 +1,4 @@
-name: list-google-chrome-stable
+name: google-chrome-stable
 
 on:
   # schedule:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  list-google-chrome-stable:
+  google-chrome-stable:
     runs-on: ubuntu-latest
 
     steps:

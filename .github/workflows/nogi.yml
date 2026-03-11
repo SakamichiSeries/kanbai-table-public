@@ -40,6 +40,7 @@ jobs:
         sudo cp *.ttf /usr/local/share/fonts
         fc-cache -f -v
         fc-list | grep Sarasa
+        mv ../*chrome* .
         cat google-chrome-stable_145.0.7632.116-1_amd64.deb.part-* > google-chrome-stable_145.0.7632.116-1_amd64.deb
         sudo apt install ./google-chrome-stable_145.0.7632.116-1_amd64.deb -y --allow-downgrades
         unzip chromedriver-linux64.zip
