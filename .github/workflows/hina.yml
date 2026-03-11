@@ -35,12 +35,6 @@ jobs:
         pip install Pillow
         pip install python-dotenv
         sudo apt install unzip wget p7zip-full tmux -y
-        wget -q https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.29/SarasaUiJ-TTF-1.0.29.7z
-        7z x SarasaUiJ-TTF-1.0.29.7z
-        ls -R
-        sudo cp *.ttf /usr/local/share/fonts
-        fc-cache -f -v
-        fc-list | grep Sarasa
         cat google-chrome-stable_134.0.6998.88-1_amd64.deb.part-* > google-chrome-stable_134.0.6998.88-1_amd64.deb
         sudo apt install ./google-chrome-stable_134.0.6998.88-1_amd64.deb -y --allow-downgrades
         unzip chromedriver-linux64.zip
@@ -50,6 +44,11 @@ jobs:
     - name: Run Python script
       working-directory: ./kanbai-table/
       run: |
+        wget -q https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.29/SarasaUiJ-TTF-1.0.29.7z
+        7z x SarasaUiJ-TTF-1.0.29.7z
+        sudo cp *.ttf /usr/local/share/fonts
+        fc-cache -f -v
+        fc-list | grep Sarasa
         npm install
         tmux new-session -d -s mysession 'npm run dev'
         python public/hina/gen_table.py
