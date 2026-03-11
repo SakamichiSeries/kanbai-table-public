@@ -25,8 +25,7 @@ jobs:
       with:
         python-version: '3.8' # Specify the Python version you need
 
-    - name: Run Python script
-      working-directory: ./kanbai-table/
+    - name: Set up env
       run: |
         pip install requests
         pip install pytz
@@ -40,12 +39,15 @@ jobs:
         sudo cp *.ttf /usr/local/share/fonts
         fc-cache -f -v
         fc-list | grep Sarasa
-        mv ../*chrome* .
         cat google-chrome-stable_145.0.7632.116-1_amd64.deb.part-* > google-chrome-stable_145.0.7632.116-1_amd64.deb
         sudo apt install ./google-chrome-stable_145.0.7632.116-1_amd64.deb -y --allow-downgrades
         unzip chromedriver-linux64.zip
         sudo mv chromedriver-linux64/chromedriver /usr/bin/chromedriver
         sudo chmod +x /usr/bin/chromedriver
+
+    - name: Run Python script
+      working-directory: ./kanbai-table/
+      run: |
         npm install
         tmux new-session -d -s mysession 'npm run dev'
         python public/nogi/gen_table.py
