@@ -1,4 +1,4 @@
-name: test
+name: nogi_test
 
 on:
   # schedule:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  nogi_test:
     runs-on: ubuntu-latest
 
     steps:
